@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: peer1
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:11001/eureka/,http://peer2:11002/eureka/,http://peer3:11003/eureka/
