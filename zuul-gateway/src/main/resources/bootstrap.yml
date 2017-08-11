@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: zuul-gateway
+  cloud:
+    config:
+        profile: default
+        label: master
+        discovery:
+          enabled: true
+          service-id: config-server
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 10000
+  routes:
+    service-a:
+      path: /service-a/**
+      serviceId: service-a
+    service-b:
+      path: /service-b/**
+      serviceId: service-b
+    service-c:
+      path: /service-c/**
+      serviceId: service-c
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:11001/eureka/,http://peer2:11002/eureka/,http://peer3:11003/eureka/
